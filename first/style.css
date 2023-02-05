@@ -1,0 +1,41 @@
+body {
+    font-family:Georgia, serif;
+    background-color: #230189f2;
+}
+
+section {
+    text-align: center;
+}
+
+.game-title {
+    font-size: 100px;
+    color: #2fccd7;
+    margin: 10px auto;
+}
+
+.game-box {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: 306px;
+    margin: 10px auto;
+    background-color: #230189;
+    color: #b9ff07;
+}
+
+.cell {
+    font-family:"Mochiy Pop One ",cursive;
+    width: 100px;
+    height: 100px;
+    box-shadow: 2px 2px 2px 2px #ecd7ba;
+    border: 2px solid #ecd7ba;
+    cursor: pointer;
+    line-height: 100px;
+    font-size: 60px;
+}
+
+.game-status {
+    font-size: 50px;
+    color: #2fccd7;
+    margin: 20px auto;
+}
+
