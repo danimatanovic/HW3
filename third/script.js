@@ -25,10 +25,19 @@ function cantMoveNext() {
 document.addEventListener('keydown', function (event) {
     if (stopExecution) {
         return;
-      }
+    }
     if (event.keyCode === 37) {
         slideShow(currentSlide - 1);
     } else if (event.keyCode === 39) {
         slideShow(currentSlide + 1);
     }
-});   
+});
+var slider = document.getElementById("slider");
+function myFunction() {
+    slider.classList.add("clicked-pic");
+}
+document.addEventListener("keydown", function (event) {
+    if (event.keyCode === 88) {
+        slider.classList.remove("clicked-pic");
+    }
+});
