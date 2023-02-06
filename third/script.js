@@ -15,4 +15,21 @@ leftArr.addEventListener("click", function () {
 rightArr.addEventListener("click", function () {
      slideShow(currentSlide - 1);
 })
-
+function moveNext() {
+    document.addEventListener('keydown', function(event) {
+        if (event.keyCode === 37) {
+          slideShow(currentSlide - 1);
+        } else if (event.keyCode === 39) {
+          slideShow(currentSlide + 1);
+        }
+      });
+}
+function cantMoveNext(){
+    document.addEventListener('keydown', function(event) {
+        if (event.keyCode !== 37) {
+          slideShow(currentSlide - 1);
+        } else if (event.keyCode !== 39) {
+          slideShow(currentSlide + 1);
+        }
+      });
+}
