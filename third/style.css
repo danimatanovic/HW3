@@ -1,5 +1,4 @@
-.slider
-{
+.slider {
     position: relative;
 }
 .slide {
@@ -7,7 +6,7 @@
     width: 100%;
     height: 500px;
 }
-.slider .slide-pic{
+.slider .slide-pic {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -17,8 +16,8 @@
 }
 .slide-pic.active {
     display: block;
-  }
- #right-arr {
+}
+#right-arr {
     transform: rotate(180deg);
     right: 0;
     cursor: pointer;
@@ -26,7 +25,7 @@
     top: 50%;
     z-index: 2;
 }
-#left-arr{
+#left-arr {
     cursor: pointer;
     position: absolute;
     top: 50%;

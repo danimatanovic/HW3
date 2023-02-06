@@ -10,26 +10,25 @@ function slideShow(n) {
     slides[currentSlide].classList.add("active");
 }
 leftArr.addEventListener("click", function () {
-     slideShow(currentSlide - 1);
+    slideShow(currentSlide - 1);
 })
 rightArr.addEventListener("click", function () {
-     slideShow(currentSlide - 1);
+    slideShow(currentSlide - 1);
 })
+let stopExecution = false;
 function moveNext() {
-    document.addEventListener('keydown', function(event) {
-        if (event.keyCode === 37) {
-          slideShow(currentSlide - 1);
-        } else if (event.keyCode === 39) {
-          slideShow(currentSlide + 1);
-        }
-      });
+    stopExecution = false;
 }
-function cantMoveNext(){
-    document.addEventListener('keydown', function(event) {
-        if (event.keyCode !== 37) {
-          slideShow(currentSlide - 1);
-        } else if (event.keyCode !== 39) {
-          slideShow(currentSlide + 1);
-        }
-      });
+function cantMoveNext() {
+    stopExecution = true;
 }
+document.addEventListener('keydown', function (event) {
+    if (stopExecution) {
+        return;
+      }
+    if (event.keyCode === 37) {
+        slideShow(currentSlide - 1);
+    } else if (event.keyCode === 39) {
+        slideShow(currentSlide + 1);
+    }
+});   
