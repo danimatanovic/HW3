@@ -1,6 +1,6 @@
+var numberOfBoxes = document.getElementById('numberOfBoxes');
 function myFunction() {
   var numOfChar = parseInt(document.getElementById('numberOfChar').value);
-  let numberOfBoxes = document.getElementById('numberOfBoxes');
   for (let i = 0; i < numOfChar; i++) {
     var square = document.createElement("input");
     square.style.width = "40px";
@@ -8,6 +8,7 @@ function myFunction() {
     square.style.margin = "0 10px"
     square.style.border = "2px solid black";
     square.style.textAlign = "center";
+    square.style.position = "relative";
     square.id = "squar" + i;
     numberOfBoxes.appendChild(square);
     let inputElement = document.getElementById("squar" + i);
@@ -17,12 +18,14 @@ function myFunction() {
       }
     });
   }
-  const button = document.getElementById("add");
+  createX(numOfChar);
+  const button = document.getElementById("addChar");
   button.classList.add("show");
+
 }
 function addNumber() {
-  let numberOfBoxes = document.getElementById('numberOfBoxes');
-  let i = numberOfBoxes.childNodes.length - 2;
+  let i = numberOfBoxes.childNodes.length -3;
+  console.log(numberOfBoxes.childNodes);
   var square = document.createElement("input");
   square.style.width = "40px";
   square.style.height = "40px";
@@ -37,5 +40,60 @@ function addNumber() {
       inputElement.value = inputElement.value.slice(0, 1);
     }
   });
-}
+  let removeX = document.getElementById('removeX');
+    var buttonX = document.createElement("button");
+    buttonX.innerHTML = "X";
+    buttonX.style.backgroundColor = "red";
+    buttonX.style.color = "white";
+    buttonX.style.borderRadius = "50%";
+    buttonX.style.fontWeight = "bold";
+    buttonX.style.border = "red";
+    buttonX.style.fontSize = "20px";
+    buttonX.style.height = "35px";
+    buttonX.style.width = "35px";
+    buttonX.style.margin=" 0 16px";
+    buttonX.style.cursor="pointer";
+    buttonX.id="button"+i;
+    removeX.appendChild(buttonX);
+    buttonX.addEventListener("click", function () {
+      var lastChild= removeX.lastElementChild;
+      removeX.removeChild(lastChild);
+    var index=i;
+      removeSquare(index);
+    });
+  }
 
+function createX(n){
+  let removeX = document.getElementById('removeX');
+  for (let j = 0; j < n; j++) {
+    var buttonX = document.createElement("button");
+    buttonX.innerHTML = "X";
+    buttonX.style.backgroundColor = "red";
+    buttonX.style.color = "white";
+    buttonX.style.borderRadius = "50%";
+    buttonX.style.fontWeight = "bold";
+    buttonX.style.border = "red";
+    buttonX.style.fontSize = "20px";
+    buttonX.style.height = "35px";
+    buttonX.style.width = "35px";
+    buttonX.style.margin=" 0 16px";
+    buttonX.style.cursor="pointer";
+    buttonX.id="button"+j;
+    removeX.appendChild(buttonX);
+    buttonX.addEventListener("click", function () {
+      var lastChild= removeX.lastElementChild;
+      removeX.removeChild(lastChild);
+    var index=j;
+      removeSquare(index);
+    });
+  }
+ 
+}
+function removeSquare(m){
+    var specificChild = numberOfBoxes.childNodes[m+3];
+    numberOfBoxes.removeChild(specificChild);
+    if(numberOfBoxes.childNodes.length===3){
+      const button = document.getElementById("addChar");
+      button.classList.remove("show");
+    }
+}

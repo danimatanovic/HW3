@@ -10,27 +10,52 @@ body {
     border: 5px solid red;
     text-align: center;
 }
+#removeX{
+    margin: 20px 0 0 0;
+}
 #numberOfBoxes {
     display: flex;
     justify-content: center;
     width: max-content;
-    margin: 40px auto;
+    margin: 10px auto;
     position: relative;
 }
-#add{
-    background-color: red;
+#addChar{
+    background-color: #d30000;
     color: white;
     border-radius: 50%;
-    border: red;
+    border: #d30000;
     font-size: 25px;
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    font-weight: bold;
+    width: 35px;
     position: absolute;
     top: 7px;
     right: -40px;
     justify-content: center;
     display: none;
+    align-items: center;
+    cursor: pointer;
 }
-#add.show{
+#addChar.show{
     display: flex;
+}
+#removeChar{
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    border: red;
+    font-size: 20px;
+    height: 35px;
+    width: 35px;
+    top: 7px;
+    right: -40px;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+#removeChar.show{
+    display: flex;
+
 }
