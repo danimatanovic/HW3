@@ -12,6 +12,25 @@ body {
 }
 #numberOfBoxes {
     display: flex;
-    margin: 40px 0;
     justify-content: center;
+    width: max-content;
+    margin: 40px auto;
+    position: relative;
+}
+#add{
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    border: red;
+    font-size: 25px;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 7px;
+    right: -40px;
+    justify-content: center;
+    display: none;
+}
+#add.show{
+    display: flex;
 }
