@@ -1,7 +1,7 @@
 var numberOfBoxes = document.getElementById('numberOfBoxes');
-var lettersForPalindrome="";
+var lettersForPalindrome = "";
 function myFunction() {
-  const numOfChar = parseInt(document.getElementById('numberOfChar').value);
+  var numOfChar = parseInt(document.getElementById('numberOfChar').value);
   for (let i = 0; i < numOfChar; i++) {
     var square = document.createElement("input");
     square.style.width = "40px";
@@ -10,6 +10,7 @@ function myFunction() {
     square.style.border = "2px solid black";
     square.style.textAlign = "center";
     square.style.position = "relative";
+    square.setAttribute("maxlength","1");
     square.id = "squar" + i;
     numberOfBoxes.appendChild(square);
     let inputElement = document.getElementById("squar" + i);
@@ -18,10 +19,12 @@ function myFunction() {
         inputElement.value = "";
       }
       else {
-        if (inputElement.value.length > 1) {
-          inputElement.value = inputElement.value.slice(0, 1);
-        }
-        lettersForPalindrome=lettersForPalindrome+inputElement.value;
+        inputElement.addEventListener("keydown", function(event) {
+          if (event.keyCode === 8 || event.keyCode === 46) {
+            event.preventDefault();
+          }
+        });
+        lettersForPalindrome = lettersForPalindrome + inputElement.value;
         checkPalindrome(lettersForPalindrome);
       }
     });
@@ -29,8 +32,8 @@ function myFunction() {
   createX(numOfChar);
   const button = document.getElementById("addChar");
   button.classList.add("show");
-
 }
+
 function addNumber() {
   let i = numberOfBoxes.childNodes.length - 3;
   var square = document.createElement("input");
@@ -39,6 +42,7 @@ function addNumber() {
   square.style.margin = "0 10px"
   square.style.border = "2px solid black";
   square.style.textAlign = "center";
+  square.setAttribute("maxlength","1");
   square.id = "squar" + i;
   numberOfBoxes.appendChild(square);
   let inputElement = document.getElementById("squar" + i);
@@ -47,21 +51,23 @@ function addNumber() {
       inputElement.value = "";
     }
     else {
-      if (inputElement.value.length > 1) {
-        inputElement.value = inputElement.value.slice(0, 1);
-      }
-      lettersForPalindrome=lettersForPalindrome+inputElement.value;
+      inputElement.addEventListener("keydown", function(event) {
+        if (event.keyCode === 8 || event.keyCode === 46) {
+          event.preventDefault();
+        }
+      });
+      lettersForPalindrome = lettersForPalindrome + inputElement.value;
       checkPalindrome(lettersForPalindrome);
     }
   });
   let removeX = document.getElementById('removeX');
   var buttonX = document.createElement("button");
   buttonX.innerHTML = "X";
-  buttonX.style.backgroundColor = "red";
+  buttonX.style.backgroundColor = "rgb(222 0 0 / 74%)";
   buttonX.style.color = "white";
   buttonX.style.borderRadius = "50%";
   buttonX.style.fontWeight = "bold";
-  buttonX.style.border = "red";
+  buttonX.style.border = "rgb(222 0 0 / 74%)";
   buttonX.style.fontSize = "20px";
   buttonX.style.height = "35px";
   buttonX.style.width = "35px";
@@ -74,7 +80,7 @@ function addNumber() {
     removeX.removeChild(lastChild);
     var index = i;
     removeSquare(index);
-    lettersForPalindrome=lettersForPalindrome.substring(0,i) + lettersForPalindrome.substring(i+1); 
+    lettersForPalindrome = lettersForPalindrome.substring(0, i) + lettersForPalindrome.substring(i + 1);
     checkPalindrome(lettersForPalindrome);
   });
 }
@@ -84,11 +90,11 @@ function createX(n) {
   for (let j = 0; j < n; j++) {
     var buttonX = document.createElement("button");
     buttonX.innerHTML = "X";
-    buttonX.style.backgroundColor = "red";
+    buttonX.style.backgroundColor = "rgb(222 0 0 / 74%)";
     buttonX.style.color = "white";
     buttonX.style.borderRadius = "50%";
     buttonX.style.fontWeight = "bold";
-    buttonX.style.border = "red";
+    buttonX.style.border = "rgb(222 0 0 / 74%)";
     buttonX.style.fontSize = "20px";
     buttonX.style.height = "35px";
     buttonX.style.width = "35px";
@@ -101,7 +107,7 @@ function createX(n) {
       removeX.removeChild(lastChild);
       var index = j;
       removeSquare(index);
-      lettersForPalindrome=lettersForPalindrome.substring(0,j) + lettersForPalindrome.substring(j+1); 
+      lettersForPalindrome = lettersForPalindrome.substring(0, j) + lettersForPalindrome.substring(j + 1);
       checkPalindrome(lettersForPalindrome);
     });
   }
@@ -121,10 +127,14 @@ function isCharacterALetter(char) {
 
 function checkPalindrome(string) {
   let len = string.length;
-  for (let i = 0; i < len / 2; i++) {
-      if (string[i] !== string[len - 1 - i]) {
-       return document.getElementById("palindrome").innerHTML='It is not a palindrome';
-      }
+  if(len===0){
+    return document.getElementById("palindrome").innerHTML ="";
   }
- return document.getElementById("palindrome").innerHTML ="IT IS A PALINDROME";
+  for (let i = 0; i < len / 2; i++) {
+    if (string[i] !== string[len - 1 - i]) {
+      return document.getElementById("palindrome").innerHTML = 'Unijeta riječ nije palindrom';
+    }
+  }
+  return document.getElementById("palindrome").innerHTML = "Unijeta riječ je palindrom";
 }
+
