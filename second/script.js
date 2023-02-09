@@ -1,5 +1,6 @@
 var numberOfBoxes = document.getElementById('numberOfBoxes');
 var lettersForPalindrome = "";
+const warningMessage = document.getElementById("warningMessage");
 function myFunction() {
   var numOfChar = parseInt(document.getElementById('numberOfChar').value);
   for (let i = 0; i < numOfChar; i++) {
@@ -16,9 +17,11 @@ function myFunction() {
     let inputElement = document.getElementById("squar" + i);
     inputElement.addEventListener("input", function () {
       if (isCharacterALetter(inputElement.value) == false) {
-        inputElement.value = "";
+        warningMessage.classList.add("show");
+        inputElement.value=""
       }
       else {
+        warningMessage.classList.remove("show");
         inputElement.addEventListener("keydown", function(event) {
           if (event.keyCode === 8 || event.keyCode === 46) {
             event.preventDefault();
@@ -48,9 +51,12 @@ function addNumber() {
   let inputElement = document.getElementById("squar" + i);
   inputElement.addEventListener("input", function () {
     if (isCharacterALetter(inputElement.value) == false) {
-      inputElement.value = "";
+      const warningMessage = document.getElementById("warningMessage");
+      warningMessage.classList.add("show");
+      inputElement.value=""
     }
     else {
+      warningMessage.classList.remove("show");
       inputElement.addEventListener("keydown", function(event) {
         if (event.keyCode === 8 || event.keyCode === 46) {
           event.preventDefault();

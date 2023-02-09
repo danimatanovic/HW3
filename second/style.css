@@ -1,5 +1,6 @@
 body {
     background-color: bisque;
+    color: black;
 }
 .box {
     text-align: center;
@@ -10,7 +11,7 @@ body {
     border: 5px solid rgb(222 0 0);
     text-align: center;
 }
-#removeX{
+#removeX {
     margin: 20px 0 0 0;
 }
 #numberOfBoxes {
@@ -20,7 +21,7 @@ body {
     margin: 10px auto;
     position: relative;
 }
-#addChar{
+#addChar {
     background-color: rgba(0, 0, 0, 0.488);
     color: white;
     border-radius: 50%;
@@ -37,11 +38,34 @@ body {
     align-items: center;
     cursor: pointer;
 }
-#addChar.show{
+#addChar.show {
     display: flex;
 }
-#palindrome{
+#palindrome {
     font-size: 30px;
     font-weight: 800;
     color: #bf0505;
 }
+#warningMessage {
+opacity: 0;
+    font-size: 20px;
+    font-weight: 300;
+    max-width: fit-content;
+    background-color: #bf050561;
+    padding: 10px;
+    margin: 15px auto;
+    transition: 0.2s all ease-in-out;
+}
+#warningMessage.show {
+  opacity: 1;
+}
+/* input[type="number" i] {
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+} */
+input {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+  }
