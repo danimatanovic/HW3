@@ -1,40 +1,47 @@
 var numberOfBoxes = document.getElementById('numberOfBoxes');
 var lettersForPalindrome = "";
 const warningMessage = document.getElementById("warningMessage");
+const warningNumber = document.getElementById("warningNumber");
 function myFunction() {
   var numOfChar = parseInt(document.getElementById('numberOfChar').value);
-  for (let i = 0; i < numOfChar; i++) {
-    var square = document.createElement("input");
-    square.style.width = "40px";
-    square.style.height = "40px";
-    square.style.margin = "0 10px"
-    square.style.border = "2px solid black";
-    square.style.textAlign = "center";
-    square.style.position = "relative";
-    square.setAttribute("maxlength","1");
-    square.id = "squar" + i;
-    numberOfBoxes.appendChild(square);
-    let inputElement = document.getElementById("squar" + i);
-    inputElement.addEventListener("input", function () {
-      if (isCharacterALetter(inputElement.value) == false) {
-        warningMessage.classList.add("show");
-        inputElement.value=""
-      }
-      else {
-        warningMessage.classList.remove("show");
-        inputElement.addEventListener("keydown", function(event) {
-          if (event.keyCode === 8 || event.keyCode === 46) {
-            event.preventDefault();
-          }
-        });
-        lettersForPalindrome = lettersForPalindrome + inputElement.value;
-        checkPalindrome(lettersForPalindrome);
-      }
-    });
+  if (numOfChar <= 0) {
+    warningNumber.classList.add("show");
   }
-  createX(numOfChar);
-  const button = document.getElementById("addChar");
-  button.classList.add("show");
+  else {
+    warningNumber.classList.remove("show");
+    for (let i = 0; i < numOfChar; i++) {
+      var square = document.createElement("input");
+      square.style.width = "40px";
+      square.style.height = "40px";
+      square.style.margin = "0 10px"
+      square.style.border = "2px solid black";
+      square.style.textAlign = "center";
+      square.style.position = "relative";
+      square.setAttribute("maxlength", "1");
+      square.id = "squar" + i;
+      numberOfBoxes.appendChild(square);
+      let inputElement = document.getElementById("squar" + i);
+      inputElement.addEventListener("input", function () {
+        if (isCharacterALetter(inputElement.value) == false) {
+          warningMessage.classList.add("show");
+          inputElement.value = ""
+        }
+        else {
+          warningMessage.classList.remove("show");
+          inputElement.addEventListener("keydown", function (event) {
+            if (event.keyCode === 8 || event.keyCode === 46) {
+              event.preventDefault();
+            }
+          });
+          lettersForPalindrome = lettersForPalindrome + inputElement.value;
+          checkPalindrome(lettersForPalindrome);
+        }
+      });
+    }
+    createX(numOfChar);
+    const button = document.getElementById("addChar");
+    button.classList.add("show");
+  }
 }
 
 function addNumber() {
@@ -45,7 +52,7 @@ function addNumber() {
   square.style.margin = "0 10px"
   square.style.border = "2px solid black";
   square.style.textAlign = "center";
-  square.setAttribute("maxlength","1");
+  square.setAttribute("maxlength", "1");
   square.id = "squar" + i;
   numberOfBoxes.appendChild(square);
   let inputElement = document.getElementById("squar" + i);
@@ -53,11 +60,11 @@ function addNumber() {
     if (isCharacterALetter(inputElement.value) == false) {
       const warningMessage = document.getElementById("warningMessage");
       warningMessage.classList.add("show");
-      inputElement.value=""
+      inputElement.value = ""
     }
     else {
       warningMessage.classList.remove("show");
-      inputElement.addEventListener("keydown", function(event) {
+      inputElement.addEventListener("keydown", function (event) {
         if (event.keyCode === 8 || event.keyCode === 46) {
           event.preventDefault();
         }
@@ -133,8 +140,8 @@ function isCharacterALetter(char) {
 
 function checkPalindrome(string) {
   let len = string.length;
-  if(len===0){
-    return document.getElementById("palindrome").innerHTML ="";
+  if (len === 0) {
+    return document.getElementById("palindrome").innerHTML = "";
   }
   for (let i = 0; i < len / 2; i++) {
     if (string[i] !== string[len - 1 - i]) {

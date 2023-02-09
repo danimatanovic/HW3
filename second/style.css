@@ -2,6 +2,11 @@ body {
     background-color: bisque;
     color: black;
 }
+h1{
+    font-size: 50px;
+    color: #bf0505;
+    font-weight: 900;
+}
 .box {
     text-align: center;
 }
@@ -47,7 +52,7 @@ body {
     color: #bf0505;
 }
 #warningMessage {
-opacity: 0;
+    opacity: 0;
     font-size: 20px;
     font-weight: 300;
     max-width: fit-content;
@@ -57,15 +62,31 @@ opacity: 0;
     transition: 0.2s all ease-in-out;
 }
 #warningMessage.show {
-  opacity: 1;
+    opacity: 1;
 }
-/* input[type="number" i] {
-  font-size: 20px;
-  font-weight: 500;
-  text-align: center;
-} */
 input {
     font-size: 20px;
     font-weight: 500;
     text-align: center;
-  }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+#warningNumber {
+    display: none;
+    font-size: 20px;
+    font-weight: 300;
+    max-width: fit-content;
+    background-color: #bf050561;
+    padding: 10px;
+    margin: 15px auto;
+}
+#warningNumber.show {
+    display: flex;
+}
